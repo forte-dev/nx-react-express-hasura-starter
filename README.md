@@ -44,18 +44,35 @@ To provide a secure by design, well architected and structured baseline for star
 └── workspace.json            # NX project workspace configuration
 ```
 
-## Clone & Install
+## Clone
 ```
 git clone https://github.com/forte-dev/nx-react-express-hasura-starter.git
+```
 
+## Install
+```
 cd nx-react-express-hasura-starter
-
 npm install
 ```
 
-## Run
+## Initialize
+```
+npm run init
+```
+
+## Build Hasura
+```
+npm run db:build
+```
+
+## Run client & server
 ```
 npm run dev
+```
+
+## Access Hasura
+```
+npm run db:console
 ```
 
 ## Contact

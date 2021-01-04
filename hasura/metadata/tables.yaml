@@ -1,0 +1,91 @@
+- table:
+    schema: public
+    name: accounts
+- table:
+    schema: public
+    name: projects
+  object_relationships:
+    - name: creator
+      using:
+        manual_configuration:
+          remote_table:
+            schema: public
+            name: users
+          column_mapping:
+            creator_id: id
+  insert_permissions:
+    - role: user
+      permission:
+        check: {}
+        columns:
+          - creator_id
+          - body
+        backend_only: false
+  select_permissions:
+    - role: user
+      permission:
+        columns:
+          - body
+          - created_at
+          - updated_at
+          - creator_id
+          - id
+        filter:
+          creator_id:
+            _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: sessions
+- table:
+    schema: public
+    name: users
+  array_relationships:
+    - name: projects
+      using:
+        manual_configuration:
+          remote_table:
+            schema: public
+            name: projects
+          column_mapping:
+            id: creator_id
+  insert_permissions:
+    - role: user
+      permission:
+        check: {}
+        columns:
+          - email
+          - email_verified
+          - image
+          - name
+        backend_only: false
+  select_permissions:
+    - role: user
+      permission:
+        columns:
+          - id
+          - created_at
+          - email_verified
+          - updated_at
+          - email
+          - image
+          - name
+        filter: {}
+  update_permissions:
+    - role: user
+      permission:
+        columns:
+          - image
+          - name
+        filter:
+          id:
+            _eq: X-Hasura-User-Id
+        check: null
+  delete_permissions:
+    - role: user
+      permission:
+        filter:
+          id:
+            _eq: X-Hasura-User-Id
+- table:
+    schema: public
+    name: verification_requests
