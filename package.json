@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
-  "engines" : { "node" : ">=14.15.3", "npm" : ">=7.0.15" },
+  "engines" : { "node" : ">=14.15.3" },
   "description": "Full-stack baseline for startup development",
   "homepage": "https://github.com/forte-dev/nx-react-express-hasura-starter",
   "repository": {
