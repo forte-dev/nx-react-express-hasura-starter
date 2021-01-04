@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
-  "engines" : { "node" : ">=14.15.3" },
+  "engines": {
+    "node": ">=14.15.3"
+  },
   "description": "Full-stack baseline for startup development",
   "homepage": "https://github.com/forte-dev/nx-react-express-hasura-starter",
   "repository": {
@@ -79,11 +81,24 @@
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.2.0",
+    "husky": "^4.3.6",
     "jest": "26.2.2",
+    "lint-staged": "^10.5.3",
     "prettier": "2.1.2",
     "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
     "tslint": "~6.1.0",
     "typescript": "~4.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ]
   }
 }
