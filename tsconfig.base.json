@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@forte-dev/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@forte-dev/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@forte-dev/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
