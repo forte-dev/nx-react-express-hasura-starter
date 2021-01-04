@@ -97,8 +97,7 @@
   },
   "lint-staged": {
     "*.{js,json,md,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write --ignore-unknown"
+      "npm run format --uncommitted"
     ]
   }
 }
