@@ -210,6 +210,81 @@
           }
         }
       }
+    },
+    "scroll-to-top": {
+      "root": "libs/scroll-to-top",
+      "sourceRoot": "libs/scroll-to-top/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/scroll-to-top/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/scroll-to-top"
+          ],
+          "options": {
+            "jestConfig": "libs/scroll-to-top/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "app-layout": {
+      "root": "libs/app-layout",
+      "sourceRoot": "libs/app-layout/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app-layout/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/app-layout"
+          ],
+          "options": {
+            "jestConfig": "libs/app-layout/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ui-theme": {
+      "root": "libs/ui-theme",
+      "sourceRoot": "libs/ui-theme/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ui-theme/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/ui-theme"
+          ],
+          "options": {
+            "jestConfig": "libs/ui-theme/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

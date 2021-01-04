@@ -41,6 +41,15 @@
     },
     "ui": {
       "tags": []
+    },
+    "scroll-to-top": {
+      "tags": []
+    },
+    "app-layout": {
+      "tags": []
+    },
+    "ui-theme": {
+      "tags": []
     }
   }
 }
