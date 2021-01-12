@@ -16,10 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@forte-dev/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@forte-dev/ui": ["libs/ui/src/index.ts"],
-      "@forte-dev/scroll-to-top": ["libs/scroll-to-top/src/index.ts"],
-      "@forte-dev/app-layout": ["libs/app-layout/src/index.ts"],
-      "@forte-dev/ui-theme": ["libs/ui-theme/src/index.ts"]
+      "@forte-dev/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

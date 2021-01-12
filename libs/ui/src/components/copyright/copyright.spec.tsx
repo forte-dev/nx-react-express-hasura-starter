@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Ui from './ui';
+import Copyright from './copyright';
 
-describe('Ui', () => {
+describe('Copyright', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Ui />);
+    const { baseElement } = render(<Copyright />);
     expect(baseElement).toBeTruthy();
   });
 });
