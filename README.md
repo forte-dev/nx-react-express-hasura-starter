@@ -1,13 +1,17 @@
 # Forte.dev
+
 Full-stack baseline for rapid development
 
 ## Synopsis
+
 Full-stack react-express-hasura app utilizing [NX](https://nx.dev/) development environment
 
 ## Motivation
-To provide a secure by design, well architected and structured baseline for startups & dev studios 
+
+To provide a secure by design, well architected and structured baseline for startups & dev studios
 
 ## Project Layout
+
 ```
 .
 ├── /.vscode/
@@ -68,43 +72,72 @@ To provide a secure by design, well architected and structured baseline for star
 ```
 
 ## Clone
+
 ```
 git clone https://github.com/forte-dev/nx-react-express-hasura-starter.git
 ```
 
 ## Install
+
 ```
 cd nx-react-express-hasura-starter
 npm install
 ```
 
 ## Initialize
+
 ```
 npm run init
 ```
 
 ## Build Hasura
+
 ```
 npm run db:build
 ```
 
 ## Run client & server
+
 ```
 npm run dev
 ```
 
 ## Access Hasura
+
 ```
 npm run db:console
 ```
 
+## Building new UI
+
+### components
+
+```
+nx g @nrwl/react:component my-component-name  --project=ui --export --directory components
+```
+
+### layout
+
+```
+nx g @nrwl/react:component my-layout-name  --project=ui --export --directory layouts
+```
+
+### utils
+
+```
+nx g @nrwl/react:component my-util-name  --project=ui --export --directory utils
+```
+
 ## Contact
+
 #### Bartek Kus
-* Homepage: http://bartekus.com
-* E-mail: bartekus@gmail.com
-* Twitter: [@Bartekus](https://twitter.com/Bartekus "Bartekus on twitter")
+
+- Homepage: http://bartekus.com
+- E-mail: bartekus@gmail.com
+- Twitter: [@Bartekus](https://twitter.com/Bartekus 'Bartekus on twitter')
 
 ## License
+
 Copyright (c) 2021 [Forte Dev Ltd.](https://forte.dev)
 
 Licensed under the MIT license
