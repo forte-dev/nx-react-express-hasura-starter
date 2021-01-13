@@ -92,6 +92,9 @@ npm run init
 
 ## Build Hasura
 
+> Please note that `docker volume prune` will be run prior to the building process
+> If you choose 'Y' this will delete any existing postgreSQL data, so if you are unsure select 'n'.
+
 ```
 npm run db:build
 ```

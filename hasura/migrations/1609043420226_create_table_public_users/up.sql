@@ -17,8 +17,9 @@ COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
 CREATE TABLE "public"."users" (
   "id" uuid NOT NULL UNIQUE DEFAULT gen_random_uuid(),
   "name" varchar,
-  "email" varchar NOT NULL,
+  "email" varchar UNIQUE NOT NULL,
   "email_verified" timestamptz,
+  "password" varchar NOT NULL,
   "image" varchar,
   "created_at" timestamptz NOT NULL DEFAULT now(),
   "updated_at" timestamptz NOT NULL DEFAULT now(),
