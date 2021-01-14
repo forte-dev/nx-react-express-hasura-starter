@@ -27,6 +27,7 @@
     "generate:hasura-env": "node utils/make-hasura-env",
     "generate:server-env": "node utils/make-server-env",
     "generate:rsa-keys": "node utils/rsa-keys-gen",
+    "generate:hasura-admin-pass": "node utils/gen-hasura-admin-pass",
     "dev": "nx run-many --parallel --target=serve --projects=client,api",
     "start": "nx serve",
     "build": "nx build",
@@ -72,6 +73,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-router-dom": "^5.2.0",
+    "sodium-native": "^3.2.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
