@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import * as expressValidator from 'express-validator';
 
 import { User } from '../db/schema';
@@ -86,4 +86,9 @@ export const postSignup = async (req, res, next) => {
       handleResponse(res, 200, user.getUser());
     }
   })(req, res, next);
+};
+
+export default {
+  postLogin,
+  postSignup,
 };

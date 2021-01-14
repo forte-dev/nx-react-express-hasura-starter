@@ -5,7 +5,7 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
 import { Message } from '@forte-dev/api-interfaces';
-import * as userController from './app/controllers/user';
+import userController from './app/controllers/user';
 
 const port = Number(process.env.SERVER_PORT) || 4444;
 const hostname = process.env.HOSTNAME || 'localhost';
