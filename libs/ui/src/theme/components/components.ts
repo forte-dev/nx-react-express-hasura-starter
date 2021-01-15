@@ -14,23 +14,17 @@ const components = {
   },
 
   MuiButtonBase: {
-    defaultProps: {
-      // The props to apply
-      disableRipple: true, // No more ripple, on the whole application 💣!
-    },
+    defaultProps: {},
     styleOverrides: {
       root: {
-        // The props to apply
-        disableRipple: true, // No more ripple, on the whole application 💣!
+        disableRipple: true,
       },
     },
   },
   MuiButton: {
     defaultProps: {},
     styleOverrides: {
-      root: {
-        borderRadius: 40,
-      },
+      root: {},
     },
   },
 

@@ -17,9 +17,7 @@
     "paths": {
       "@forte-dev/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@forte-dev/ui": ["libs/ui/src/index.ts"],
-      "@forte-dev/utils/get-cookie": ["libs/utils/get-cookie/src/index.ts"],
-      "@forte-dev/ui/get-cookie": ["libs/ui/get-cookie/src/index.ts"],
-      "@forte-dev/utils/test222": ["libs/utils/test222/src/index.ts"]
+      "@forte-dev/validations": ["libs/validations/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -4,8 +4,6 @@ import { blue, pink } from '@material-ui/core/colors';
 import { darken, makeStyles } from '@material-ui/core/styles';
 import { CssBaseline, useMediaQuery, ThemeProvider } from '@material-ui/core';
 
-import { StylesProvider } from '@material-ui/core';
-
 import { createUiTheme } from '../../theme/create-ui-theme';
 
 const PaletteModeContext = React.createContext(null);
@@ -70,7 +68,9 @@ export function AppLayout(props: AppLayoutProps) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <PaletteModeContext.Provider value={ctx}>{children}</PaletteModeContext.Provider>
+        <PaletteModeContext.Provider value={ctx}>
+          {children}
+        </PaletteModeContext.Provider>
       </ThemeProvider>
     </div>
   );

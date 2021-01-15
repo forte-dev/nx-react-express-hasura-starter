@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["node"]
+    "types": ["node", "webpack-env", "ES2015.Iterable"]
   },
   "files": ["../../node_modules/@nrwl/react/typings/image.d.ts"],
   "exclude": ["**/*.spec.ts", "**/*.spec.tsx"],

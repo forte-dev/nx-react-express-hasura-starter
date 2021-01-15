@@ -41,6 +41,9 @@
     },
     "ui": {
       "tags": []
+    },
+    "validations": {
+      "tags": []
     }
   }
 }

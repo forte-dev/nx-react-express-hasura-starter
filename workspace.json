@@ -16,7 +16,6 @@
             "polyfills": "apps/client/src/polyfills.ts",
             "tsConfig": "apps/client/tsconfig.app.json",
             "assets": ["apps/client/src/favicon.ico", "apps/client/src/assets"],
-            "styles": ["apps/client/src/styles.css"],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -180,6 +179,19 @@
           "options": {
             "jestConfig": "libs/ui/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "validations": {
+      "root": "libs/validations",
+      "sourceRoot": "libs/validations/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/validations/**/*.ts"]
           }
         }
       }
