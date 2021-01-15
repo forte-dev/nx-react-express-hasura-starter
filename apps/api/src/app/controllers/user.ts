@@ -14,13 +14,25 @@ function handleResponse(res, code, statusMsg) {
  * Sign in using email and password.
  */
 export const postLogin = async (req, res, next) => {
-  await expressValidator.check('email', 'Email is not valid.').notEmpty().isEmail().run(req);
-  await expressValidator.check('password', 'Password cannot be blank.').notEmpty().run(req);
+  await expressValidator
+    .check('email', 'Email is not valid.')
+    .notEmpty()
+    .isEmail()
+    .run(req);
+  await expressValidator
+    .check('password', 'Password cannot be blank.')
+    .notEmpty()
+    .run(req);
 
   const validationResults = await expressValidator.validationResult(req);
 
   if (validationResults.isEmpty()) {
-    await expressValidator.check('email').trim().escape().normalizeEmail().run(req);
+    await expressValidator
+      .check('email')
+      .trim()
+      .escape()
+      .normalizeEmail()
+      .run(req);
     await expressValidator.check('password').trim().escape().run(req);
   } else {
     return handleResponse(res, 400, { errors: validationResults.array() });
@@ -55,15 +67,32 @@ export const postLogin = async (req, res, next) => {
  * Create a new local account.
  */
 export const postSignup = async (req, res, next) => {
-  await expressValidator.check('email', 'Email is not valid.').notEmpty().isEmail().run(req);
-  await expressValidator.check('password', 'Password must be at least 4 characters long.').notEmpty().isLength({ min: 4 }).run(req);
-  await expressValidator.check('confirmPassword', 'Passwords do not match.').notEmpty().equals(req.body.password).run(req);
+  await expressValidator
+    .check('email', 'Email is not valid.')
+    .notEmpty()
+    .isEmail()
+    .run(req);
+  await expressValidator
+    .check('password', 'Password must be at least 4 characters long.')
+    .notEmpty()
+    .isLength({ min: 4 })
+    .run(req);
+  await expressValidator
+    .check('confirmPassword', 'Passwords do not match.')
+    .notEmpty()
+    .equals(req.body.password)
+    .run(req);
 
   const validationResults = await expressValidator.validationResult(req);
 
   try {
     if (validationResults.isEmpty()) {
-      await expressValidator.check('email').trim().escape().normalizeEmail().run(req);
+      await expressValidator
+        .check('email')
+        .trim()
+        .escape()
+        .normalizeEmail()
+        .run(req);
       await expressValidator.check('password').trim().escape().run(req);
 
       await User.query().allowGraph('[email, password]').insert({

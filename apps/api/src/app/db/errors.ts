@@ -1,5 +1,12 @@
 import { NotFoundError, ValidationError } from 'objection';
-import { DBError, UniqueViolationError, NotNullViolationError, ForeignKeyViolationError, CheckViolationError, DataError } from 'objection-db-errors';
+import {
+  DBError,
+  UniqueViolationError,
+  NotNullViolationError,
+  ForeignKeyViolationError,
+  CheckViolationError,
+  DataError,
+} from 'objection-db-errors';
 
 // errorHandler uses `res` as a express response object.
 export function errorHandler(err, res) {

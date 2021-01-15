@@ -16,7 +16,11 @@ const infos = [
   {
     title: 'React',
     subheader: 'Frontend',
-    description: ['Declarative', 'Component-Based', 'Learn Once, Write Anywhere'],
+    description: [
+      'Declarative',
+      'Component-Based',
+      'Learn Once, Write Anywhere',
+    ],
     buttonText: 'reactjs.org',
     buttonLink: 'https://reactjs.org/',
     buttonVariant: 'contained',
@@ -32,7 +36,11 @@ const infos = [
   {
     title: 'Hasura + PostgreSQL',
     subheader: 'Data Access Layer',
-    description: ['Instant Realtime GraphQL APIs', 'Built-in Granular Authorization', 'Easily Integrate Business Logic'],
+    description: [
+      'Instant Realtime GraphQL APIs',
+      'Built-in Granular Authorization',
+      'Easily Integrate Business Logic',
+    ],
     buttonText: 'hasura.io',
     buttonLink: 'https://hasura.io/',
     buttonVariant: 'contained',
@@ -78,7 +86,12 @@ export function HomepageMain(props: HomepageMainProps) {
 
   return (
     <Container maxWidth="md" component="main">
-      <Grid container spacing={5} alignItems="flex-end" className={classes.cardContainer}>
+      <Grid
+        container
+        spacing={5}
+        alignItems="flex-end"
+        className={classes.cardContainer}
+      >
         {infos.map((info) => (
           <Grid item key={info.title} xs={12} sm={6} md={4}>
             <Card>
@@ -93,19 +106,35 @@ export function HomepageMain(props: HomepageMainProps) {
               <CardContent>
                 <ul>
                   {info.description.map((line) => (
-                    <Typography component="li" variant="subtitle1" align="center" key={line}>
+                    <Typography
+                      component="li"
+                      variant="subtitle1"
+                      align="center"
+                      key={line}
+                    >
                       {line}
                     </Typography>
                   ))}
                 </ul>
               </CardContent>
               <CardActions>
-                <Grid container direction="column" justifyContent="center" alignItems="center">
+                <Grid
+                  container
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
                   <Typography component="h3" align="center">
                     Learn more at
                   </Typography>
 
-                  <Button fullWidth variant={info.buttonVariant as 'outlined' | 'contained'} href={info.buttonLink} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    fullWidth
+                    variant={info.buttonVariant as 'outlined' | 'contained'}
+                    href={info.buttonLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {info.buttonText}
                   </Button>
                 </Grid>

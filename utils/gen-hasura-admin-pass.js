@@ -14,12 +14,16 @@ async function generateNewSecretKey() {
 }
 
 async function convertNewSecretKey() {
-  const keyBuffer = await fs.readFileSync(path.join(__dirname, '../secrets', keyName));
+  const keyBuffer = await fs.readFileSync(
+    path.join(__dirname, '../secrets', keyName)
+  );
   return keyBuffer.toString('hex');
 }
 
 async function appendToHasuraEnvFile(stringEntry = '') {
-  const { stdout, stderr } = await exec(`echo '${stringEntry}' >> ./hasura/.env`);
+  const { stdout, stderr } = await exec(
+    `echo '${stringEntry}' >> ./hasura/.env`
+  );
   if (stderr) throw stderr;
   return stdout;
 }
@@ -33,7 +37,9 @@ async function appendToEnvFile(stringEntry = '') {
 (async function main() {
   try {
     if (fs.existsSync(`./secrets/${keyName}`)) {
-      console.log(`${keyName} file already exists, skipping generating process.`);
+      console.log(
+        `${keyName} file already exists, skipping generating process.`
+      );
 
       return null;
     } else {
@@ -50,7 +56,9 @@ async function appendToEnvFile(stringEntry = '') {
       await appendToHasuraEnvFile();
       await appendToHasuraEnvFile(newStringEntry);
 
-      console.log(`${keyName} file has been generated, parsed into hex, and added to the '.env' and './hasura/.env' files as ${envKeyName}!`);
+      console.log(
+        `${keyName} file has been generated, parsed into hex, and added to the '.env' and './hasura/.env' files as ${envKeyName}!`
+      );
 
       return 0;
     }

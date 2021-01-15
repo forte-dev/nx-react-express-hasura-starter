@@ -4,9 +4,13 @@ const fs = require('fs');
 
 try {
   if (fs.existsSync('.env')) {
-    console.log('The .env file already exists, skipping make-server-env process.');
+    console.log(
+      'The .env file already exists, skipping make-server-env process.'
+    );
   } else {
-    console.log('The .env file does not exist, using .env-server-template as the baseline.');
+    console.log(
+      'The .env file does not exist, using .env-server-template as the baseline.'
+    );
     fs.copyFileSync('.env-server-template', '.env');
   }
 } catch (err) {

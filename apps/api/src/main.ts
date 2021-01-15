@@ -30,7 +30,9 @@ app.post('/signup', userController.postSignup);
 
 const server = app.listen(port, () => {
   console.log();
-  console.log(`${chalk.green('✓')} Listening at http://${hostname}:${port}/api`);
+  console.log(
+    `${chalk.green('✓')} Listening at http://${hostname}:${port}/api`
+  );
   console.log(`  Running in ${app.get('env')} mode.`);
   console.log('  Press CTRL-C to stop.\n');
 });

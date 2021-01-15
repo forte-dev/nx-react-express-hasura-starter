@@ -9,12 +9,16 @@ import { PaletteModeContext } from '../../layouts/app-layout/app-layout';
 /* eslint-disable-next-line */
 export interface ThemePaletteModeToggleButtonProps {}
 
-export function ThemePaletteModeToggleButton(props: ThemePaletteModeToggleButtonProps) {
+export function ThemePaletteModeToggleButton(
+  props: ThemePaletteModeToggleButtonProps
+) {
   return (
     <PaletteModeContext.Consumer>
       {({ toggleDarkMode, darkMode }) => (
         <Box sx={{ color: 'text.primary' }}>
-          <Button onClick={toggleDarkMode}>{darkMode ? <Brightness5Icon /> : <Brightness4Icon />}</Button>
+          <Button onClick={toggleDarkMode}>
+            {darkMode ? <Brightness5Icon /> : <Brightness4Icon />}
+          </Button>
         </Box>
       )}
     </PaletteModeContext.Consumer>
