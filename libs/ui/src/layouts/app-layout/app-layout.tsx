@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { blue, pink } from '@material-ui/core/colors';
 import { darken, makeStyles } from '@material-ui/core/styles';
 import { CssBaseline, useMediaQuery, ThemeProvider } from '@material-ui/core';
 
 import { createUiTheme } from '../../theme/create-ui-theme';
+import getCookie from '../../utils/get-cookie/get-cookie';
 
 const PaletteModeContext = React.createContext(null);
 
@@ -32,6 +33,17 @@ export function AppLayout(props: AppLayoutProps) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [darkMode, setDarkMode] = useState(prefersDarkMode);
 
+  useEffect(() => {
+    let isInitialized = true;
+
+    if (isInitialized) {
+      const paletteMode = getCookie('paletteMode');
+      setDarkMode(paletteMode === 'dark');
+    }
+
+    return () => (isInitialized = false);
+  }, []);
+
   const theme = useMemo(() => {
     const nextTheme = createUiTheme({
       palette: {
@@ -55,6 +67,7 @@ export function AppLayout(props: AppLayoutProps) {
   }, [darkMode]);
 
   const toggleDarkMode = () => {
+    document.cookie = `paletteMode=${!darkMode ? 'dark' : 'light'}`;
     setDarkMode(!darkMode);
   };
 

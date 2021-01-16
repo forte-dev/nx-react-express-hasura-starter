@@ -48,8 +48,6 @@ const infos = [
 ];
 
 const useStyles = makeStyles((theme) => {
-  console.log('theme.palette.mode', theme.palette.mode);
-
   return {
     '@global': {
       ul: {
