@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { blue, pink } from '@material-ui/core/colors';
+import React, { useEffect, useState, useMemo } from 'react';
 import { darken, makeStyles } from '@material-ui/core/styles';
 import { CssBaseline, useMediaQuery, ThemeProvider } from '@material-ui/core';
 
 import { createUiTheme } from '../../theme/create-ui-theme';
 import getCookie from '../../utils/get-cookie/get-cookie';
 
-const PaletteModeContext = React.createContext(null);
+const AppConfigContext = React.createContext(null);
 
 /* eslint-disable-next-line */
 export interface AppLayoutProps {
@@ -27,11 +28,13 @@ const useStyles = makeStyles(() => ({
 }));
 
 export function AppLayout(props: AppLayoutProps) {
-  const classes = useStyles();
   const { children } = props;
+  const classes = useStyles();
+  const { i18n } = useTranslation();
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const [darkMode, setDarkMode] = useState(prefersDarkMode);
+  const [language, setLanguage] = React.useState(i18n.language);
 
   useEffect(() => {
     let isInitialized = true;
@@ -71,9 +74,16 @@ export function AppLayout(props: AppLayoutProps) {
     setDarkMode(!darkMode);
   };
 
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setLanguage(lng);
+  };
+
   const ctx = {
     darkMode,
     toggleDarkMode,
+    language,
+    changeLanguage,
   };
 
   return (
@@ -81,9 +91,9 @@ export function AppLayout(props: AppLayoutProps) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <PaletteModeContext.Provider value={ctx}>
+        <AppConfigContext.Provider value={ctx}>
           {children}
-        </PaletteModeContext.Provider>
+        </AppConfigContext.Provider>
       </ThemeProvider>
     </div>
   );
@@ -91,4 +101,4 @@ export function AppLayout(props: AppLayoutProps) {
 
 export default AppLayout;
 
-export { PaletteModeContext };
+export { AppConfigContext };

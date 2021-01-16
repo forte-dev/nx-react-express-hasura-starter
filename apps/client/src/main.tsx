@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { ScrollToTop } from '@forte-dev/ui';
 
+import './i18n';
 import App from './app/app';
 import configureStore from './app/store/configure-store';
 

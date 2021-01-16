@@ -1,3 +1,4 @@
+export * from './components/language-select-dropdown/language-select-dropdown';
 export * from './components/tab-panel/tab-panel';
 export * from './components/form-fields/form-fields';
 export * from './components/login-modal/login-modal';
@@ -10,7 +11,7 @@ export * from './components/theme-palette-mode-toggle-button/theme-palette-mode-
 
 export {
   default as AppLayout,
-  PaletteModeContext,
+  AppConfigContext,
 } from './layouts/app-layout/app-layout';
 
 export * from './utils/get-cookie/get-cookie';

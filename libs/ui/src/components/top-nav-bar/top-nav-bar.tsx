@@ -7,8 +7,8 @@ import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-// noinspection ES6PreferShortImport
-import { ThemePaletteModeToggleButton } from '../theme-palette-mode-toggle-button/theme-palette-mode-toggle-button';
+import ThemePaletteModeToggleButton from '../theme-palette-mode-toggle-button/theme-palette-mode-toggle-button';
+import LanguageSelectDropdown from '../language-select-dropdown/language-select-dropdown';
 import { Message } from '@forte-dev/api-interfaces';
 import { useTranslation } from 'react-i18next';
 
@@ -64,7 +64,7 @@ export function TopNavBar(props: TopNavBarProps) {
           noWrap
           className={classes.toolbarTitle}
         >
-          Company name
+          {t('COMPANY')}
         </Typography>
         <nav>
           <Link
@@ -78,13 +78,14 @@ export function TopNavBar(props: TopNavBarProps) {
             {m.message}
           </Link>
         </nav>
+        <LanguageSelectDropdown />
         <ThemePaletteModeToggleButton />
         <Button
           variant="outlined"
           className={classes.link}
           onClick={handleLoginClick}
         >
-          Login
+          {t('LOGIN')}
         </Button>
       </Toolbar>
     </AppBar>

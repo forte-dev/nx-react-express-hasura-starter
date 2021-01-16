@@ -4,7 +4,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness5Icon from '@material-ui/icons/Brightness5';
 
 // noinspection ES6PreferShortImport
-import { PaletteModeContext } from '../../layouts/app-layout/app-layout';
+import { AppConfigContext } from '../../layouts/app-layout/app-layout';
 
 /* eslint-disable-next-line */
 export interface ThemePaletteModeToggleButtonProps {}
@@ -13,7 +13,7 @@ export function ThemePaletteModeToggleButton(
   props: ThemePaletteModeToggleButtonProps
 ) {
   return (
-    <PaletteModeContext.Consumer>
+    <AppConfigContext.Consumer>
       {({ toggleDarkMode, darkMode }) => (
         <Box sx={{ color: 'text.primary' }}>
           <Button onClick={toggleDarkMode}>
@@ -21,7 +21,7 @@ export function ThemePaletteModeToggleButton(
           </Button>
         </Box>
       )}
-    </PaletteModeContext.Consumer>
+    </AppConfigContext.Consumer>
   );
 }
 
