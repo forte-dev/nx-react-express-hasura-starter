@@ -7,14 +7,15 @@ import { ScrollToTop } from '@forte-dev/ui';
 
 import './i18n';
 import App from './app/app';
+import AuthService from './app/services/auth-service';
 import configureStore from './app/store/configure-store';
 
-const store = configureStore({ initialState: {} });
+const store = configureStore({ initialState: {}, services: { AuthService } });
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={process.env.NX_PUBLIC_URL}>
         <ScrollToTop />
         <App />
       </BrowserRouter>
