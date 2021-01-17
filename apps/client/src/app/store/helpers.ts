@@ -1,4 +1,4 @@
-export function createAction(type, payload) {
+export function createAction(type, payload?) {
   return typeof payload === 'undefined' ? { type } : { type, payload };
 }
 
