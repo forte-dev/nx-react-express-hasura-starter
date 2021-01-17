@@ -9,9 +9,9 @@ try {
     );
   } else {
     console.log(
-      'The .env file does not exist, using .env-server-template as the baseline.'
+      'The .env file does not exist, using .env-template as the baseline.'
     );
-    fs.copyFileSync('.env-server-template', '.env');
+    fs.copyFileSync('.env-template', '.env');
   }
 } catch (err) {
   console.log('Something went wrong during make-server-env process.');
