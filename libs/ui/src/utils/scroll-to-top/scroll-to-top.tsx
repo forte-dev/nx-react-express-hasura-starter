@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-/* eslint-disable-next-line */
-interface ScrollToTopProps {}
-
-function ScrollToTop(props: ScrollToTopProps) {
+export function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
