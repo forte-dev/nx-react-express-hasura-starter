@@ -6,7 +6,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   LOGOUT,
-} from './actions';
+} from '@forte-dev/ui';
 
 const initialState = {
   signUpPending: false,
@@ -14,7 +14,7 @@ const initialState = {
   authenticated: false,
 };
 
-export default function auth0(state = initialState, action) {
+export default function authentication(state = initialState, action) {
   switch (action.type) {
     case SIGN_UP_REQUEST:
       return {

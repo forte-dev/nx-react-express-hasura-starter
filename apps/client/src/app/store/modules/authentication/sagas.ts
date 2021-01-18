@@ -7,7 +7,7 @@ import {
   LOGIN_REQUEST,
   loginSuccess,
   loginError,
-} from './actions';
+} from '@forte-dev/ui';
 
 export function* signUpSaga(AuthService, action) {
   try {
