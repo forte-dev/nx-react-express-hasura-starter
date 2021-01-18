@@ -1,39 +1,68 @@
-import React, { useState } from 'react';
+import ReactGA from 'react-ga';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation, Switch } from 'react-router-dom';
+
 import {
   AppLayout,
-  TopNavBar,
-  HomepageMain,
-  HomepageHero,
-  Footer,
-  LoginModal,
+  saveState,
+  FullPageLayout,
+  AdminLayout,
+  PublicRoute,
+  PrivateRoute,
 } from '@forte-dev/ui';
 
+import LandingPage from './pages/landing-page';
+import DashboardPage from './pages/dashboard-page';
+
+// Initialize Google Analytics
+if (process.env.NODE_ENV === 'production') {
+  ReactGA.initialize(process.env.NX_GOOGLE_ANALYTICS);
+}
+
+const trackPage = (page, options) => {
+  ReactGA.set({ page, ...options });
+  ReactGA.pageview(page);
+};
+
 export const App = () => {
-  const [openLoginDialog, setLoginDialog] = useState(false);
+  const location = useLocation();
+  const authentication = useSelector((store) => store.authentication);
 
-  const handleLoginClick = () => {
-    setLoginDialog(!openLoginDialog);
-  };
+  useEffect(() => {
+    window.addEventListener('unload', () => {
+      saveState({ authentication });
+    });
 
-  const handleLoginUser = async (values, actions) => {
-    await new Promise((r) => setTimeout(r, 500));
-    console.log('values, actions', values, actions);
+    return () =>
+      window.removeEventListener('unload', () => {
+        saveState({ authentication });
+      });
+  }, [authentication]);
 
-    actions.setTouched({});
-    actions.setSubmitting(false);
-  };
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      const page = location.pathname;
+      trackPage(page, { debug: true });
+    }
+  }, [location]);
 
   return (
     <AppLayout>
-      <TopNavBar handleLoginClick={handleLoginClick} />
-      <HomepageHero />
-      <HomepageMain />
-      <Footer />
-      <LoginModal
-        onSubmit={handleLoginUser}
-        open={openLoginDialog}
-        onClose={handleLoginClick}
-      />
+      <Switch>
+        <PublicRoute
+          exact
+          path="/"
+          component={LandingPage}
+          layout={FullPageLayout}
+        />
+        <PrivateRoute
+          exact
+          path="/dashboard"
+          component={DashboardPage}
+          layout={AdminLayout}
+        />
+      </Switch>
     </AppLayout>
   );
 };

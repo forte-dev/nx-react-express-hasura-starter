@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ScrollToTop } from '@forte-dev/ui';
+import { ScrollToTop, loadState } from '@forte-dev/ui';
 
 import './i18n';
 import App from './app/app';
 import AuthService from './app/services/auth-service';
 import configureStore from './app/store/configure-store';
 
-const store = configureStore({ initialState: {}, services: { AuthService } });
+const initialState = loadState();
+const store = configureStore({ initialState, services: { AuthService } });
 
 ReactDOM.render(
   <React.StrictMode>
