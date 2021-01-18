@@ -56,6 +56,8 @@ export function errorHandler(err, res) {
     });
   } else if (err instanceof UniqueViolationError) {
     res.status(409).send({
+      error:
+        'This email address has been already registered, please use another one, or login using this one.',
       message: err.message,
       type: 'UniqueViolation',
       data: {

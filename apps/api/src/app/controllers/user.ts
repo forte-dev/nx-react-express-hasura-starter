@@ -78,7 +78,7 @@ export const postSignup = async (req, res, next) => {
     .isLength({ min: 4 })
     .run(req);
   await expressValidator
-    .check('confirmPassword', 'Passwords do not match.')
+    .check('passwordConfirmation', 'Passwords do not match.')
     .notEmpty()
     .equals(req.body.password)
     .run(req);
@@ -103,6 +103,8 @@ export const postSignup = async (req, res, next) => {
       return handleResponse(res, 400, { errors: validationResults.array() });
     }
   } catch (err) {
+    console.log('err', err);
+
     errorHandler(err, res);
     return;
   }
