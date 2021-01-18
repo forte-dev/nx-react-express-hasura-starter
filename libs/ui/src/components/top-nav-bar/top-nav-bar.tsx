@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
+import { useTranslation } from 'react-i18next';
 import Toolbar from '@material-ui/core/Toolbar';
 import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
@@ -10,22 +12,34 @@ import { makeStyles } from '@material-ui/core/styles';
 import ThemePaletteModeToggleButton from '../theme-palette-mode-toggle-button/theme-palette-mode-toggle-button';
 import LanguageSelectDropdown from '../language-select-dropdown/language-select-dropdown';
 import { Message } from '@forte-dev/api-interfaces';
-import { useTranslation } from 'react-i18next';
+
+import LoginModal from '../../components/login-modal/login-modal';
+// noinspection ES6PreferShortImport
+import {
+  signUpRequest,
+  loginRequest,
+} from '../../redux-modules/authentication/actions';
 
 /* eslint-disable-next-line */
 export interface TopNavBarProps {
-  handleLoginClick: () => void;
+  color: 'inherit' | 'transparent' | 'default' | 'primary' | 'secondary';
+  className: string;
+  elevation: number;
+  position: 'fixed' | 'absolute' | 'relative' | 'static' | 'sticky';
+
+  // handleLoginClick: () => void;
+  // handleLogoutClick: () => void;
+  // userIsAuthenticated: boolean;
 }
 
 TopNavBar.propTypes = {
-  handleLoginClick: PropTypes.func,
+  // handleLoginClick: PropTypes.func,
+  // handleLogoutClick: PropTypes.func,
+  // userIsAuthenticated: PropTypes.bool,
 };
 
 const useStyles = makeStyles((theme) => {
   return {
-    appBar: {
-      borderBottom: `1px solid ${theme.palette.divider}`,
-    },
     toolbar: {
       flexWrap: 'wrap',
     },
@@ -41,8 +55,21 @@ const useStyles = makeStyles((theme) => {
 export function TopNavBar(props: TopNavBarProps) {
   const classes = useStyles();
   const { t } = useTranslation();
-  const { handleLoginClick } = props;
   const [m, setMessage] = useState<Message>({ message: '' });
+
+  const [openLoginDialog, setLoginDialog] = useState(false);
+  const authenticated = useSelector(
+    (store) => store.authentication.authenticated
+  );
+
+  const handleLoginClick = () => {
+    setLoginDialog(!openLoginDialog);
+  };
+
+  const handleLogoutClick = () => {
+    // userService.logout();
+    // setUserIsAuthenticated(false);
+  };
 
   useEffect(() => {
     fetch('/api')
@@ -51,12 +78,7 @@ export function TopNavBar(props: TopNavBarProps) {
   }, []);
 
   return (
-    <AppBar
-      position="static"
-      color="default"
-      elevation={0}
-      className={classes.appBar}
-    >
+    <AppBar {...props}>
       <Toolbar className={classes.toolbar}>
         <Typography
           variant="h6"
@@ -80,14 +102,31 @@ export function TopNavBar(props: TopNavBarProps) {
         </nav>
         <LanguageSelectDropdown />
         <ThemePaletteModeToggleButton />
-        <Button
-          variant="outlined"
-          className={classes.link}
-          onClick={handleLoginClick}
-        >
-          {t('LOGIN')}
-        </Button>
+
+        {authenticated ? (
+          <Button
+            variant="outlined"
+            className={classes.link}
+            onClick={handleLogoutClick}
+          >
+            {t('LOGOUT')}
+          </Button>
+        ) : (
+          <Button
+            variant="outlined"
+            className={classes.link}
+            onClick={handleLoginClick}
+          >
+            {t('LOGIN')}
+          </Button>
+        )}
       </Toolbar>
+      <LoginModal
+        loginRequest={loginRequest}
+        signUpRequest={signUpRequest}
+        open={openLoginDialog}
+        onClose={handleLoginClick}
+      />
     </AppBar>
   );
 }
