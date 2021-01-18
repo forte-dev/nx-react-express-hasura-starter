@@ -1,4 +1,4 @@
-import { createMuiTheme, ThemeOptions } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeOptions } from '@material-ui/core';
 
 import breakpoints from './components/breakpoints';
 import mixins from './components/mixins';
